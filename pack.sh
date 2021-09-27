@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ ! -d ./internal ]; then
+    echo "Please run under the correct directory!"
+    exit 1
+fi
+
 tmpdir=__tmp__
 workdir=live_injection_7ed136ec_7a61_4b54_adc3_ae494d5106ea
 

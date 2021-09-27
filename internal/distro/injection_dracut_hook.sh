@@ -9,10 +9,7 @@ echo $* > /$datadir/done
 
 . $datadir/distro/functions.sh
 
-vroot=/root
-
-
-
+vroot=/sysroot
 
 if [ -d $vroot/etc ]; then
     chown_for_live "/$datadir/sysroot" $vroot

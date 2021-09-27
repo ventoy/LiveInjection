@@ -13,4 +13,9 @@ if [ -d /scripts ]; then
             fi
         fi
     done
+elif [ -d /live/custom ]; then
+    ls -1 /live/custom/ | while read line; do
+        cat ../injection_antix_hook.sh >> /live/custom/$line/7.sh
+    done
 fi
+
