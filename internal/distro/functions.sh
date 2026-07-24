@@ -43,3 +43,7 @@ chown_for_live() {
     done
     cd $volddir
 }
+
+vtlive_log() {
+    echo "$@" >> /ventoy/log
+}

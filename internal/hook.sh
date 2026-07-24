@@ -5,9 +5,12 @@ PATH=/ventoy/busybox:$PATH
 datadir=$(ls -1 / | grep live_injection_)
 ostype=$1
 
+echo "datadir=$datadir"
+echo "ostype=$ostype"
+
 if [ -d "/$datadir" -a -n "$ostype" ]; then
     :
-else
+else    
     exit 0
 fi
 
@@ -42,15 +45,18 @@ check_possible_os_type() {
 }
 
 if [ ! -f /$datadir/distro/$ostype/hook.sh ]; then
+    echo "/$datadir/distro/$ostype/hook.sh not exist, now check possible os type"
     ostype=$(check_possible_os_type)
+    echo "check_possible_os_type=$ostype"
 fi
 
-echo "ostype=$ostype" >> /$datadir/log
 
 CurDir=$(pwd)
 if [ -f /$datadir/distro/$ostype/hook.sh ]; then
     cd /$datadir/distro/$ostype/
     sh /$datadir/distro/$ostype/hook.sh
     cd $CurDir
+else
+    echo "/$datadir/distro/$ostype/hook.sh finally not exist"
 fi
 
