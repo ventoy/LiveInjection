@@ -9,12 +9,12 @@ echo $* > /$datadir/done
 
 . $datadir/distro/functions.sh
 
-vroot=/root
+vroot=$(ventoy_new_root_dir)
 
 vtlive_log "======================================"
 vtlive_log "$0 called ..."
 
-if [ -d $vroot/etc ]; then    
+if [ -n "$vroot" ]; then    
     chown_for_live "/$datadir/sysroot" $vroot
     
     vtlive_log "Copy /$datadir/sysroot/* to $vroot/"

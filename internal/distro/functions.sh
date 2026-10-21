@@ -47,3 +47,15 @@ chown_for_live() {
 vtlive_log() {
     echo "$@" >> /ventoy/log
 }
+
+
+ventoy_new_root_dir() {
+    for vroot in /sysroot /newroot /new_root /root /live/aufs /pup_new; do
+        if [ -d $vroot/etc ]; then
+            echo "$vroot"
+            return
+        fi
+    done
+    echo ''
+}
+

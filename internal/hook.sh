@@ -41,7 +41,11 @@ check_possible_os_type() {
         echo 'debian'; return
     fi
 
-    echo 'xxx'
+    if [ -d /var/lib/dracut/hooks ]; then
+        echo 'dracut'; return
+    fi
+
+    echo 'fallback'
 }
 
 if [ ! -f /$datadir/distro/$ostype/hook.sh ]; then

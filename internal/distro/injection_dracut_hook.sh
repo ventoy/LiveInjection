@@ -9,9 +9,8 @@ echo $* > /$datadir/done
 
 . $datadir/distro/functions.sh
 
-vroot=/sysroot
-
-if [ -d $vroot/etc ]; then
+vroot=$(ventoy_new_root_dir)
+if [ -n "$vroot" ]; then
     chown_for_live "/$datadir/sysroot" $vroot
     cp -a /$datadir/sysroot/* $vroot/
 fi
